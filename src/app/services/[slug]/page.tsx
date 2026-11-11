@@ -6,6 +6,7 @@ import { BookButton } from "@/components/BookButton";
 import { Kicker, ProcessScroller } from "@/components/Blocks";
 import { Faq } from "@/components/Faq";
 import { Check, Mark } from "@/components/Icons";
+import { Visual } from "@/components/Visuals";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -48,6 +49,11 @@ export default async function ServicePage({ params }: Props) {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* DEV NOTE: the illustration for each service is set by `visual` on the service in content/site.ts */}
+      <section className="sec sec-tight">
+        <div className="wrap svc-visual" data-reveal><Visual name={s.visual} /></div>
       </section>
 
       {s.problem && (

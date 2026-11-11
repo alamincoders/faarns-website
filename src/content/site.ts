@@ -28,17 +28,63 @@ export const home = {
   headline: ["We automate the work.", "Then we grow the business."],
   subhead:
     "FAARNS builds AI agents and automations that answer leads, run operations and cut busywork, plus the website, search and ads that bring in more customers. One team. Built around how you already work.",
-  secondaryCta: { label: "See how we deliver", href: "/#automate" },
+  secondaryCta: { label: "See what we automate", href: "/#automate" },
   proof: { count: 50, text: "startups and growing brands across the US, UK, Europe and Asia." },
+  /**
+   * DEV NOTE (Hero demo): each scenario is one tab in the hero demo.
+   * Add, remove or reorder scenarios freely. Each needs exactly 4 steps.
+   * `status` is the live line shown above the steps while that step runs.
+   */
   flow: {
-    title: "An AI sales agent, start to finish",
-    steps: [
-      { title: "New lead arrives", text: "Website form, WhatsApp or email", status: "New lead from your website form" },
-      { title: "Agent replies in seconds", text: "From your approved info only", status: "AI agent is replying" },
-      { title: "Lead scored, CRM updated", text: "Your team gets a Slack alert", status: "Scoring the lead and updating your CRM" },
-      { title: "Call booked", text: "Straight into your calendar", status: "Call booked in your calendar" },
+    title: "One team. Every system.",
+    scenarios: [
+      {
+        tab: "Sales & CRM",
+        steps: [
+          { title: "New lead arrives", text: "Website, WhatsApp or Messenger", status: "New lead from your website form" },
+          { title: "AI replies in seconds", text: "From your approved info only", status: "AI agent is replying" },
+          { title: "Added to your CRM", text: "Scored, tagged and assigned", status: "Scoring the lead and updating your CRM" },
+          { title: "Call booked", text: "Straight into your calendar", status: "Call booked in your calendar" },
+        ],
+      },
+      {
+        tab: "Meta ads",
+        steps: [
+          { title: "Ads go live", text: "Meta and Google, tracked to revenue", status: "Campaigns running on Meta and Google" },
+          { title: "Rules watch spend", text: "Cost per lead and ROAS, daily", status: "Checking cost per lead and ROAS" },
+          { title: "Losers paused", text: "Winners get the budget", status: "Pausing underperforming ads" },
+          { title: "Report in your inbox", text: "Plain English, every week", status: "Weekly report sent" },
+        ],
+      },
+      {
+        tab: "SEO & AEO",
+        steps: [
+          { title: "Find what buyers ask", text: "Real searches and AI prompts", status: "Finding what your buyers search for" },
+          { title: "Pages built to answer", text: "Written, structured, optimized", status: "Publishing answer-ready pages" },
+          { title: "Ranking on Google", text: "Tracked every month", status: "Climbing Google results" },
+          { title: "Quoted by AI", text: "ChatGPT, Gemini, Perplexity", status: "Named in AI answers" },
+        ],
+      },
+      {
+        tab: "AI vision",
+        steps: [
+          { title: "Camera sees the floor", text: "Your existing CCTV", status: "Reading the camera feed" },
+          { title: "AI spots free tables", text: "Free, busy or needs cleaning", status: "Detecting free and busy tables" },
+          { title: "Live board for staff", text: "On a tablet or phone", status: "Updating the host’s live board" },
+          { title: "Guests seated faster", text: "No walking the floor to check", status: "Next guest seated" },
+        ],
+      },
+      {
+        tab: "Support",
+        steps: [
+          { title: "Customer asks", text: "Chat, email or WhatsApp", status: "New question from a customer" },
+          { title: "Agent answers", text: "From your docs and policies", status: "Answering from your help docs" },
+          { title: "Hard cases to a person", text: "With the full conversation", status: "Handing off to your team" },
+          { title: "Logged in your CRM", text: "Nothing slips", status: "Ticket logged and closed" },
+        ],
+      },
     ],
-    doneStatus: "Done. Ready for the next lead",
+    doneStatus: "Done. Running again",
   },
   stack: {
     label: "The AI and growth stack we build on, and train your team to use.",
@@ -49,100 +95,33 @@ export const home = {
     headline: "Everyone builds websites. We build systems that work while you sleep.",
     body: "Any agency can redesign your site. Very few can wire AI into your sales, support and operations, then make sure it actually runs. We do both, so your growth doesn’t stop at a pretty homepage.",
   },
+  /**
+   * DEV NOTE (Stacking cards): `visual` picks the illustration on the right of each card.
+   * Options: "chat" | "crm" | "ads" | "search" | "website" | "brand" | "ui" | "audit" | "answer" | "vision".
+   * "vision" uses the photo at /public/images/ai-vision.jpg.
+   */
   automate: {
-    label: "How we deliver",
-    headline: "Real AI systems and digital growth built for real business outcomes.",
+    label: "What we build",
+    headline: "AI for how your business sells, serves and runs.",
     cards: [
-      {
-        team: "Web & Platforms",
-        tagline: "Modern websites built to convert visitors into paying clients.",
-        bullets: [
-          "High-converting, responsive layout",
-          "Blazing-fast Next.js architecture",
-          "Seamless CRM & tool integrations",
-          "Engineered for scalable growth",
-        ],
-        image: "/services/custom-web-solutions.png",
-        href: "/services/web-design",
-      },
-      {
-        team: "Product Design",
-        tagline: "Clean, intuitive user experiences that customers love using.",
-        bullets: [
-          "Interactive Figma prototypes",
-          "Frictionless user journey flows",
-          "Mobile-first design systems",
-          "Polished, accessible UI components",
-        ],
-        image: "/services/ui-ux-design.png",
-        href: "/services/web-design",
-      },
-      {
-        team: "AI Automation",
-        tagline: "Cut the busywork and let intelligent systems handle the routine.",
-        bullets: [
-          "24/7 AI lead qualification & booking",
-          "Automated invoicing & team reports",
-          "Smart data sync across all your tools",
-          "Seamless human handoff on demand",
-        ],
-        image: "/services/aeo.png",
-        href: "/services/ai-agents",
-      },
-      {
-        team: "Search & Growth",
-        tagline: "Get found on Google and cited by ChatGPT, Perplexity, and Claude.",
-        bullets: [
-          "Optimized for conversational AI queries",
-          "High-intent organic search rankings",
-          "Technical audits & Core Web Vitals",
-          "Consistent inbound buyer pipeline",
-        ],
-        image: "/services/seo.png",
-        href: "/services/seo",
-      },
-      {
-        team: "Brand Identity",
-        tagline: "Look like the market leader your company is growing into.",
-        bullets: [
-          "Distinct logo & visual identity",
-          "Clear brand voice & style guide",
-          "Polished digital & pitch assets",
-          "Differentiated market positioning",
-        ],
-        image: "/services/brand.png",
-        href: "/services/brand",
-      },
+      { team: "AI agents & chatbots", tagline: "Every customer answered, on every channel.", bullets: ["AI agents on your website, WhatsApp, Messenger and email", "Answers from your info, hands off to a person when it matters"], link: { label: "More on AI agents", href: "/services/ai-agents" }, visual: "chat" },
+      { team: "CRM & sales automation", tagline: "Every lead tracked. Every follow-up done.", bullets: ["Leads captured, scored and routed into your CRM", "Follow-ups, quotes, invoices and bookings on autopilot"], link: { label: "More on CRM and workflow automation", href: "/services/workflow-automation" }, visual: "crm" },
+      { team: "Meta ads, SEO & AEO", tagline: "More demand, without the guesswork.", bullets: ["Meta and Google ads with rules that pause what isn’t working", "SEO and AEO so Google and AI recommend you"], link: { label: "More on growth marketing", href: "/services/paid-ads" }, visual: "ads" },
+      { team: "Custom AI solutions", tagline: "AI built around how your business runs.", bullets: ["AI vision, quoting tools and internal assistants", "Data moving between your tools on its own"], link: { label: "More on AI strategy", href: "/services/ai-strategy" }, visual: "vision" },
     ],
   },
+  /**
+   * DEV NOTE (Growth rows): on desktop, hovering a row shows a floating preview that follows the cursor.
+   * On phones the same preview sits inside the row. `visual` uses the same options as the cards above.
+   */
   growth: {
     label: "Then we grow it",
     headline: "The website, search and ads that feed the machine.",
     rows: [
-      {
-        title: "Website",
-        text: "A site that sells, built to plug into your automations.",
-        href: "/services/web-design",
-        image: "/services/custom-web-solutions.png",
-      },
-      {
-        title: "Search",
-        text: "Found on Google. Quoted by AI.",
-        href: "/services/seo",
-        image: "/services/seo.png",
-      },
-      {
-        title: "Ads",
-        text: "Every dollar tracked to revenue.",
-        href: "/services/paid-ads",
-        image: "/services/paid-ads.png",
-      },
-      {
-        title: "Brand",
-        text: "Look like the company you’re becoming.",
-        href: "/services/brand",
-        image: "/services/brand.png",
-      },
+      { title: "Website", text: "A site that sells, built to plug into your automations.", href: "/services/web-design", visual: "website" },
+      { title: "Search", text: "Found on Google. Quoted by AI.", href: "/services/seo", visual: "search" },
+      { title: "Ads", text: "Every dollar tracked to revenue.", href: "/services/paid-ads", visual: "ads" },
+      { title: "Brand", text: "Look like the company you’re becoming.", href: "/services/brand", visual: "brand" },
     ],
   },
   services: {
@@ -150,15 +129,20 @@ export const home = {
     headline: "Everything between the first click and the finished task.",
     integrations: { title: "Works inside the tools your team already uses.", text: "CRM, email, WhatsApp, Slack, sheets, payments, booking and 100+ more." },
   },
+  /**
+   * DEV NOTE (Work): each case renders as a browser-window preview of the live site.
+   * - `preview` text is taken from the live site’s own hero, so the mock matches.
+   * - Add `image: "/work/presio.jpg"` (a 1600×1000 screenshot in /public/work) to show a real screenshot instead of the mock.
+   * - `accent` tints the mock to the client’s brand.
+   */
   work: {
     label: "Work",
     headline: "What it looks like when it sticks.",
-    /** Add `image: "/work/presio.jpg"` (file in /public/work) and `href` when you have them. */
     cases: [
-      { client: "Presio", sector: "SaaS", result: "Branded quotes in minutes, not hours." },
-      { client: "Dropout Skool", sector: "Education", result: "A learning platform students actually finish." },
-      { client: "Al Majlis Arabian", sector: "Hospitality", result: "From menu browse to booked table in three taps." },
-    ] as { client: string; sector: string; result: string; image?: string; href?: string }[],
+      { client: "Presio", sector: "SaaS", result: "Branded quotes in minutes, not hours.", url: "https://presio.vercel.app/", domain: "presio.vercel.app", accent: "#7C9CFF", preview: { kicker: "AI quoting for service businesses", headline: "Send faster quotes, win more jobs, protect your profits.", cta: "Try Presio free for 7 days", tiles: ["Quoting", "Customer management", "Billing & invoicing"] } },
+      { client: "Al Majlis Arabian", sector: "Hospitality", result: "From menu browse to booked table in three taps.", url: "https://www.almajlisarabianrestaurant.com/", domain: "almajlisarabianrestaurant.com", accent: "#D9A55B", preview: { kicker: "Gulshan-2, Dhaka", headline: "Authentic Arabian dining in the heart of Dhaka.", cta: "Reserve a table", tiles: ["Effortless table booking", "100+ Arabian dishes", "Takeaway & catering"] } },
+      { client: "America to BD", sector: "Logistics", result: "Parcel forwarding from the USA to Bangladesh, tracked end to end.", url: "https://americatobd.us/", domain: "americatobd.us", accent: "#4FC3A1", preview: { kicker: "USA → Bangladesh shipping", headline: "Save up to 40% on parcel forwarding from the USA to Bangladesh.", cta: "Pricing calculator", tiles: ["Parcel forwarding", "Purchase & forward", "Track order"] } },
+    ] as { client: string; sector: string; result: string; url: string; domain: string; accent: string; image?: string; preview: { kicker: string; headline: string; cta: string; tiles: string[] } }[],
   },
   pricing: { label: "Pricing", headline: ["Start small. Prove it.", "Then grow."] },
   faqLabel: "FAQ",
@@ -179,7 +163,7 @@ export const workProcess = {
 export type Service = {
   slug: string; name: string; group: string; tagline: string;
   headline: string; subhead: string; problem: string | null; problemLabel: string;
-  deliverables: string[]; results: string;
+  deliverables: string[]; results: string; visual: string;
   price: { amount: string; label: string; timeline: string; note: string };
   faq: { q: string; a: string }[];
 };
@@ -187,6 +171,7 @@ export type Service = {
 export const services: Service[] = [
   {
     "slug": "ai-agents",
+    "visual": "chat",
     "name": "AI agents",
     "group": "AI automation",
     "tagline": "Answer leads and support customers, 24/7.",
@@ -204,7 +189,7 @@ export const services: Service[] = [
     ],
     "results": "First agent live in 2 to 4 weeks. Replies in seconds, not hours.",
     "price": {
-      "amount": "$3,000",
+      "amount": "$1,799",
       "label": "Starting price",
       "timeline": "First agent live in 2 to 4 weeks",
       "note": "Extra agents from $2,000. Monitoring and upkeep from $300/month."
@@ -226,6 +211,7 @@ export const services: Service[] = [
   },
   {
     "slug": "workflow-automation",
+    "visual": "crm",
     "name": "Workflow automation",
     "group": "AI automation",
     "tagline": "Data, tasks and follow-ups that move on their own.",
@@ -243,7 +229,7 @@ export const services: Service[] = [
     ],
     "results": "Hours back every week, fewer dropped balls, and a clear view of what saved what.",
     "price": {
-      "amount": "$3,000",
+      "amount": "$1,799",
       "label": "Starting price",
       "timeline": "Live in 2 to 4 weeks",
       "note": "One workflow built inside your tools, with team training."
@@ -265,6 +251,7 @@ export const services: Service[] = [
   },
   {
     "slug": "ai-strategy",
+    "visual": "audit",
     "name": "AI strategy & readiness",
     "group": "AI automation",
     "tagline": "Know where AI pays off before you spend.",
@@ -281,7 +268,7 @@ export const services: Service[] = [
     ],
     "results": "A clear plan in 7 days. The fee is credited to your first build.",
     "price": {
-      "amount": "$750",
+      "amount": "$299",
       "label": "Fixed price",
       "timeline": "Plan in 7 days",
       "note": "The fee is credited to your first build."
@@ -293,7 +280,7 @@ export const services: Service[] = [
       },
       {
         "q": "What does it cost to start?",
-        "a": "Audits from $750. See pricing for details."
+        "a": "Audits from $299. See pricing for details."
       },
       {
         "q": "What’s an AI agent?",
@@ -303,6 +290,7 @@ export const services: Service[] = [
   },
   {
     "slug": "web-design",
+    "visual": "website",
     "name": "Web design & development",
     "group": "Growth",
     "tagline": "A site that sells, built to plug into your automations.",
@@ -342,6 +330,7 @@ export const services: Service[] = [
   },
   {
     "slug": "ui-ux",
+    "visual": "ui",
     "name": "UI/UX design",
     "group": "Growth",
     "tagline": "Products people get on the first try.",
@@ -374,12 +363,13 @@ export const services: Service[] = [
       },
       {
         "q": "What does it cost to start?",
-        "a": "Audits from $750. See pricing for details."
+        "a": "Audits from $299. See pricing for details."
       }
     ]
   },
   {
     "slug": "seo",
+    "visual": "search",
     "name": "SEO",
     "group": "Growth",
     "tagline": "Found on Google. Month after month.",
@@ -398,7 +388,7 @@ export const services: Service[] = [
     ],
     "results": "Early wins in 6 to 8 weeks, compounding growth over 3 to 6 months.",
     "price": {
-      "amount": "$2,000/mo",
+      "amount": "$1,399/mo",
       "label": "Growth Partner",
       "timeline": "Early wins in 6 to 8 weeks",
       "note": "Runs inside the Growth Partner retainer, alongside your automations."
@@ -414,12 +404,13 @@ export const services: Service[] = [
       },
       {
         "q": "What does it cost to start?",
-        "a": "Audits from $750. See pricing for details."
+        "a": "Audits from $299. See pricing for details."
       }
     ]
   },
   {
     "slug": "aeo",
+    "visual": "answer",
     "name": "AEO (AI search visibility)",
     "group": "Growth",
     "tagline": "Quoted by AI. Chosen by buyers.",
@@ -437,7 +428,7 @@ export const services: Service[] = [
     ],
     "results": "A clear baseline in week two, and a monthly view of where AI mentions you.",
     "price": {
-      "amount": "$2,000/mo",
+      "amount": "$1,399/mo",
       "label": "Growth Partner",
       "timeline": "Baseline in week two",
       "note": "Runs inside the Growth Partner retainer, alongside your automations."
@@ -453,12 +444,13 @@ export const services: Service[] = [
       },
       {
         "q": "What does it cost to start?",
-        "a": "Audits from $750. See pricing for details."
+        "a": "Audits from $299. See pricing for details."
       }
     ]
   },
   {
     "slug": "paid-ads",
+    "visual": "ads",
     "name": "Paid ads",
     "group": "Growth",
     "tagline": "Every dollar tracked to revenue.",
@@ -476,7 +468,7 @@ export const services: Service[] = [
     ],
     "results": "First signals in 14 to 30 days. Clear cost-per-lead from month one.",
     "price": {
-      "amount": "$2,000/mo",
+      "amount": "$1,399/mo",
       "label": "Growth Partner",
       "timeline": "First signals in 14 to 30 days",
       "note": "Runs inside the Growth Partner retainer. Ad spend is billed separately."
@@ -488,7 +480,7 @@ export const services: Service[] = [
       },
       {
         "q": "What does it cost to start?",
-        "a": "Audits from $750. See pricing for details."
+        "a": "Audits from $299. See pricing for details."
       },
       {
         "q": "Where are you based?",
@@ -498,6 +490,7 @@ export const services: Service[] = [
   },
   {
     "slug": "brand",
+    "visual": "brand",
     "name": "Brand identity",
     "group": "Growth",
     "tagline": "Look like the company you’re becoming.",
@@ -523,7 +516,7 @@ export const services: Service[] = [
     "faq": [
       {
         "q": "What does it cost to start?",
-        "a": "Audits from $750. See pricing for details."
+        "a": "Audits from $299. See pricing for details."
       },
       {
         "q": "Where are you based?",
@@ -543,9 +536,9 @@ export const pricing = {
   ladderLabel: "The path most clients take",
   ladderHeadline: "Three steps, each one paying for the next.",
   ladder: [
-    { step: "Step 1", name: "AI & Growth Audit", prefix: "", amount: "$300", suffix: " fixed", tagline: "Know exactly what to automate and fix first.", includes: ["Workflow, site, SEO and funnel review", "Ranked list of automations", "90-day plan", "Delivered in 7 days", "Credited to your first build"], cta: "Start with an audit", highlight: false },
-    { step: "Step 2", name: "Automation Quick Win", prefix: "from ", amount: "$2,000", suffix: "", tagline: "One workflow, live and paying off.", includes: ["One AI agent or automation", "Built inside your tools", "Team training", "Live in 2 to 4 weeks"], cta: "Automate my first workflow", highlight: false },
-    { step: "Step 3", name: "Growth Partner", prefix: "from ", amount: "$1399", suffix: "/mo", tagline: "Your AI and growth team, on retainer.", includes: ["Ongoing automation builds and tuning", "Plus SEO, AEO or ads (ad spend separate)", "Monthly review", "Cancel with 30 days’ notice"], cta: "See the Growth Partner plan", highlight: true },
+    { step: "Step 1", name: "AI & Growth Audit", prefix: "", amount: "$299", suffix: " fixed", tagline: "Know exactly what to automate and fix first.", includes: ["Workflow, site, SEO and funnel review", "Ranked list of automations", "90-day plan", "Delivered in 7 days", "Credited to your first build"], cta: "Start with an audit", highlight: false },
+    { step: "Step 2", name: "Automation Quick Win", prefix: "from ", amount: "$1,799", suffix: "", tagline: "One workflow, live and paying off.", includes: ["One AI agent or automation", "Built inside your tools", "Team training", "Live in 2 to 4 weeks"], cta: "Automate my first workflow", highlight: false },
+    { step: "Step 3", name: "Growth Partner", prefix: "from ", amount: "$1,399", suffix: "/mo", tagline: "Your AI and growth team, on retainer.", includes: ["Ongoing automation builds and tuning", "Plus SEO, AEO or ads (ad spend separate)", "Monthly review", "Cancel with 30 days’ notice"], cta: "See the Growth Partner plan", highlight: true },
   ],
   tableLabel: "Every service",
   tableHeadline: "Pricing by service.",
@@ -558,7 +551,7 @@ export const pricing = {
   promisesLabel: "What you can count on",
   promisesHeadline: "No surprises, in writing.",
   promises: [
-    { title: "Audit fee credited", text: "Your $750 audit is credited to your first build." },
+    { title: "Audit fee credited", text: "Your $299 audit is credited to your first build." },
     { title: "Tools billed at cost", text: "AI model and tool subscriptions (e.g. OpenAI, n8n) are billed at cost, so you always know what you pay for." },
     { title: "Paid in stages", text: "Projects are paid in stages: kickoff, sign-off, build, launch." },
     { title: "No lock-in", text: "Growth Partner cancels with 30 days’ notice. You own everything we build." },
@@ -576,10 +569,10 @@ export const faqs = {
     { q: "Do you still build websites and do SEO?", a: "Yes. Automation works best with a site and search presence that bring in demand." },
     { q: "How fast will I see results?", a: "First automation in 2 to 4 weeks. Sites in 4 to 8 weeks. Ads in 14 to 30 days. SEO over 3 to 6 months." },
     { q: "Where are you based?", a: "Our team works across North America, Europe and Asia, in your time zone." },
-    { q: "What does it cost to start?", a: "Audits from $750. See pricing for details." },
+    { q: "What does it cost to start?", a: "Audits from $299. See pricing for details." },
   ],
   pricing: [
-    { q: "What does it cost to start?", a: "Audits from $750, credited to your first build." },
+    { q: "What does it cost to start?", a: "Audits from $299, credited to your first build." },
     { q: "Why are SEO, AEO and ads monthly?", a: "Search and ads compound over months, so they run inside the Growth Partner retainer, alongside your automations. Ad spend is billed separately." },
     { q: "Are AI tools included in the price?", a: "AI model and tool subscriptions (e.g. OpenAI, n8n) are billed at cost, so you always know what you pay for." },
     { q: "How do payments work?", a: "Projects are paid in stages: kickoff, sign-off, build, launch." },
@@ -588,8 +581,11 @@ export const faqs = {
 };
 
 export const closer = {
+  eyebrow: "Ready to grow?",
   headline: "Ready to put AI to work in your business?",
   subhead: "Thirty minutes. Your workflows, our honest take, and a clear first thing to automate.",
+  cta: "Book a 30-minute call",
+  contact: "or contact us directly",
   secondary: { label: "See what we’ve built", href: "/#work" },
 };
 
@@ -605,6 +601,8 @@ export const about = {
     { title: "One team, end to end.", text: "AI automation, web and growth under one roof. No handoffs." },
     { title: "Built to hand over.", text: "You own everything, and your team can run it." },
   ],
+  /** DEV NOTE: team photo lives at /public/images/team.jpg. Replace the file to update it. */
+  photo: { src: "/images/team.jpg", alt: "The FAARNS team in matching FAARNS T-shirts" },
   team: { label: "The team", text: "Spread across North America, Europe and Asia,", muted: "so someone’s always awake for you." },
 };
 
@@ -615,7 +613,7 @@ export const contact = {
   callLabel: "What happens on the call",
   callSteps: ["You share your goals.", "We give our honest take.", "You leave with a clear next step, whether or not you work with us."],
   needs: ["AI automation", "Website", "Search", "Ads", "Brand", "Not sure yet"],
-  budgets: ["Audit ($750)", "$1,500 to $3,000", "$3,000 to $6,000", "$6,000+", "Monthly retainer (from $2,000/mo)"],
+  budgets: ["Audit ($299)", "$1,500 to $3,000", "$3,000 to $6,000", "$6,000+", "Monthly retainer (from $1,399/mo)"],
   button: "Send message",
   success: "Got it. We’ll be in touch within one business day.",
 };
@@ -624,6 +622,7 @@ export const careers = {
   eyebrow: "Careers",
   headline: ["Do the best work of your career.", "From anywhere."],
   subhead: "We’re a remote team that cares about craft, clear thinking and real results.",
+  photo: { src: "/images/team.jpg", alt: "The FAARNS team" },
   perksLabel: "Why FAARNS",
   perks: ["Fully remote", "Flexible hours", "Global clients", "Real ownership", "Learning budget"],
   /** Add roles here: { title, team, type, href }. Leave empty to hide the list. */

@@ -15,6 +15,13 @@
  *   data-count="50"               counts up when it enters the screen
  *   data-letters                  letters rise one by one (footer wordmark)
  *   data-cursor="View"            custom cursor shows this label over the element
+ *   data-hp + data-hp-row="0"     floating preview that follows the cursor over rows (desktop)
+ *
+ * DEV NOTE (step by step):
+ *   1. To animate something new, add one of the attributes above in JSX. No code change needed.
+ *   2. To tune an effect, find its block below (each starts with a comment) and change duration/ease.
+ *   3. To add a brand-new effect, add a block inside the `mm.add` callback and document its attribute here.
+ *   4. Reduced motion: anything inside `if (!motion) return;` is skipped for people who turned motion off.
  */
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -170,21 +177,15 @@ export function initMotion(root: HTMLElement, opts: MotionOptions = {}): () => v
         cleanups.push(() => { el.removeEventListener("mouseenter", pause); el.removeEventListener("mouseleave", play); });
       });
 
-      // Stacking cards (keeps 100% crisp opacity, natural sticky layering)
+      // Stacking cards
       q("[data-stack]").forEach((el) => {
         const cards = Array.from(el.querySelectorAll<HTMLElement>("[data-stack-card]"));
         cards.forEach((card, i) => {
           const next = cards[i + 1];
           if (!next) return;
           gsap.to(card, {
-            scale: 0.97,
-            ease: "none",
-            scrollTrigger: {
-              trigger: next,
-              start: "top 75%",
-              end: "top 25%",
-              scrub: true,
-            },
+            scale: 0.9, filter: "brightness(0.45)", ease: "none",
+            scrollTrigger: { trigger: next, start: "top bottom", end: "top 20%", scrub: true },
           });
         });
       });
@@ -207,6 +208,32 @@ export function initMotion(root: HTMLElement, opts: MotionOptions = {}): () => v
       }
 
       if (fine) {
+        // Floating hover preview for rows (Website / Search / Ads / Brand)
+        q("[data-hp]").forEach((hp) => {
+          const scope = hp.parentElement || root;
+          const rows = Array.from(scope.querySelectorAll<HTMLElement>("[data-hp-row]"));
+          const items = Array.from(hp.querySelectorAll<HTMLElement>("[data-hp-item]"));
+          const xTo = gsap.quickTo(hp, "x", { duration: 0.55, ease: "power3" });
+          const yTo = gsap.quickTo(hp, "y", { duration: 0.55, ease: "power3" });
+          const rot = gsap.quickTo(hp, "rotation", { duration: 0.6, ease: "power3" });
+          let lastX = 0;
+          gsap.set(hp, { xPercent: -50, yPercent: -50, scale: 0.85 });
+          const move = (e: PointerEvent) => { xTo(e.clientX); yTo(e.clientY); rot(gsap.utils.clamp(-8, 8, (e.clientX - lastX) * 0.6)); lastX = e.clientX; };
+          const enter = (i: number) => () => {
+            items.forEach((it, k) => it.classList.toggle("on", k === i));
+            gsap.to(hp, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out", overwrite: "auto" });
+          };
+          const leave = () => gsap.to(hp, { autoAlpha: 0, scale: 0.85, duration: 0.35, ease: "power3.in", overwrite: "auto" });
+          rows.forEach((r) => {
+            const on = enter(Number(r.dataset.hpRow) || 0);
+            r.addEventListener("pointerenter", on);
+            r.addEventListener("pointerleave", leave);
+            cleanups.push(() => { r.removeEventListener("pointerenter", on); r.removeEventListener("pointerleave", leave); });
+          });
+          window.addEventListener("pointermove", move);
+          cleanups.push(() => window.removeEventListener("pointermove", move));
+        });
+
         // Magnetic buttons
         q("[data-magnetic]").forEach((el) => {
           const xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3" });
@@ -322,29 +349,57 @@ export function runCurtain(el: HTMLElement): void {
   gsap.fromTo(el, { yPercent: 0, autoAlpha: 1 }, { yPercent: -100, duration: 0.9, ease: "expo.inOut", onComplete: () => { gsap.set(el, { autoAlpha: 0 }); } });
 }
 
-/** Hero automation demo: lights each step in turn, loops, pauses off screen. */
-export function initFlow(el: HTMLElement, statuses: string[], done: string): () => void {
+/**
+ * Hero demo: tabs of scenarios (Sales & CRM, Meta ads, SEO & AEO…), each with 4 steps that light up in turn.
+ * Reads its data from the element's `data-flow` JSON (built from content/site.ts → home.flow).
+ * Auto-advances to the next tab after each run; clicking a tab jumps to it. Pauses off screen.
+ */
+type FlowData = { scenarios: { tab: string; steps: { title: string; text: string; status: string }[] }[]; doneStatus: string };
+export function initFlow(el: HTMLElement): () => void {
+  let data: FlowData;
+  try { data = JSON.parse(el.dataset.flow || ""); } catch { return () => {}; }
   const steps = Array.from(el.querySelectorAll<HTMLElement>("[data-flow-step]"));
+  const tabs = Array.from(el.querySelectorAll<HTMLButtonElement>("[data-flow-tab]"));
   const status = el.querySelector<HTMLElement>("[data-flow-status]");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) { steps.forEach((s) => s.classList.add("done")); if (status) status.textContent = statuses[statuses.length - 1]; return () => {}; }
-  let i = -1; let timer: ReturnType<typeof setTimeout> | null = null; let visible = false;
-  const tick = () => {
-    i = (i + 1) % (steps.length + 1);
-    steps.forEach((s, k) => { s.classList.toggle("done", k < i); s.classList.toggle("on", k === i); });
-    if (status) {
-      gsap.fromTo(status, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" });
-      status.textContent = i < steps.length ? statuses[i] : done;
-    }
-    timer = setTimeout(tick, i < steps.length ? 1700 : 2200);
+  let sc = 0, i = -1, timer: ReturnType<typeof setTimeout> | null = null, visible = false;
+
+  const paint = (n: number) => {
+    const s = data.scenarios[n];
+    tabs.forEach((t, k) => t.setAttribute("aria-selected", String(k === n)));
+    el.classList.add("swap");
+    setTimeout(() => {
+      steps.forEach((st, k) => {
+        const h = st.querySelector("h4"), p = st.querySelector("p");
+        if (h) h.textContent = s.steps[k]?.title || "";
+        if (p) p.textContent = s.steps[k]?.text || "";
+      });
+      el.classList.remove("swap");
+    }, reduce ? 0 : 220);
   };
-  const start = () => { if (!timer && visible && !document.hidden) timer = setTimeout(tick, 600); };
+  const setStatus = (txt: string) => {
+    if (!status) return;
+    status.textContent = txt;
+    if (!reduce) gsap.fromTo(status, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" });
+  };
+  const tick = () => {
+    i++;
+    if (i > steps.length) { i = 0; sc = (sc + 1) % data.scenarios.length; paint(sc); }
+    steps.forEach((s, k) => { s.classList.toggle("done", k < i); s.classList.toggle("on", k === i); });
+    setStatus(i < steps.length ? data.scenarios[sc].steps[i].status : data.doneStatus);
+    timer = setTimeout(tick, i < steps.length ? 1600 : 1800);
+  };
   const stop = () => { if (timer) clearTimeout(timer); timer = null; };
+  const start = () => { if (!timer && visible && !document.hidden && !reduce) timer = setTimeout(tick, 500); };
+  const jump = (n: number) => () => { stop(); sc = n; i = -1; paint(n); steps.forEach((s) => s.classList.remove("done", "on")); setStatus(data.scenarios[n].steps[0].status); start(); };
+  const offs = tabs.map((t, n) => { const f = jump(n); t.addEventListener("click", f); return () => t.removeEventListener("click", f); });
+
+  if (reduce) { steps.forEach((s) => s.classList.add("done")); }
   const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); else stop(); }, { threshold: 0.2 });
   io.observe(el);
   const vis = () => (document.hidden ? stop() : start());
   document.addEventListener("visibilitychange", vis);
-  return () => { stop(); io.disconnect(); document.removeEventListener("visibilitychange", vis); };
+  return () => { stop(); io.disconnect(); offs.forEach((o) => o()); document.removeEventListener("visibilitychange", vis); };
 }
 
 export { gsap, ScrollTrigger };

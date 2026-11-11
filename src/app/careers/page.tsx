@@ -11,6 +11,11 @@ export default function CareersPage() {
     <>
       <PageHero eyebrow={careers.eyebrow} title={careers.headline[0]} muted={careers.headline[1]} sub={careers.subhead} />
       <section className="sec sec-tight"><div className="wrap">
+        <figure className="photo-band" data-reveal style={{ margin: 0 }}>
+          <img src={careers.photo.src} alt={careers.photo.alt} data-parallax="-0.08" />
+        </figure>
+      </div></section>
+      <section className="sec sec-tight"><div className="wrap">
         <div className="head" data-reveal><Kicker flush>{careers.perksLabel}</Kicker></div>
         <div className="chips" data-reveal>{careers.perks.map((p) => <span className="chip" key={p} data-reveal-item>{p}</span>)}</div>
       </div></section>

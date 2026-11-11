@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import "./visuals.css";
 import { Nav } from "@/components/Nav";
 import Footer from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/MotionProvider";

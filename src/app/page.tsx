@@ -1,16 +1,22 @@
 import Link from "next/link";
-import Image from "next/image";
 import { faqs, home, services } from "@/content/site";
 import { BookButton } from "@/components/BookButton";
 import { Kicker, Ladder, ProcessScroller } from "@/components/Blocks";
 import { Faq } from "@/components/Faq";
 import { Flow } from "@/components/Flow";
 import { ArrowNE, Mark } from "@/components/Icons";
-import { HoverImageLinks } from "@/components/HoverImageLinks";
+import { LightLines, Visual } from "@/components/Visuals";
 
+/**
+ * DEV NOTE (Homepage): sections run top to bottom in the order below.
+ * Step 1 — Change words, prices or links in content/site.ts, not here.
+ * Step 2 — Reorder sections by moving the blocks between the "SECTION" comments.
+ * Step 3 — Animations come from data-* attributes (see lib/motion.ts header).
+ */
 export default function Home() {
   return (
     <>
+      {/* SECTION: Hero — headline, CTAs and the tabbed automation demo (components/Flow.tsx) */}
       <section className="hero">
         <div className="glow a" aria-hidden="true" />
         <div data-parallax="-0.15" className="mark-bg" aria-hidden="true"><Mark outline /></div>
@@ -33,6 +39,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION: Tool marquee — edit tools in content/site.ts → home.stack.tools */}
       <div className="strip" aria-label="Tools we build on">
         <div className="wrap"><p>{home.stack.label}</p></div>
         <div className="marquee" data-marquee="34">
@@ -44,18 +51,11 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="sec why-faarns-sec">
+      {/* SECTION: Why FAARNS — violet light lines sit behind the text (components/Visuals.tsx → LightLines) */}
+      <section className="sec why">
+        <LightLines />
         <div className="wrap two">
-          <div className="why-faarns-left">
-            <Kicker>{home.difference.label}</Kicker>
-            {/* Watermark logo with subtle ambient glow */}
-            <div className="why-faarns-watermark" aria-hidden="true" data-parallax="-0.08">
-              <div className="why-faarns-glow" />
-              <div className="why-faarns-logo">
-                <Mark outline />
-              </div>
-            </div>
-          </div>
+          <Kicker>{home.difference.label}</Kicker>
           <div>
             <h2 className="h2" data-scrub>{home.difference.headline}</h2>
             <p className="lede" style={{ marginTop: 32 }} data-reveal>{home.difference.body}</p>
@@ -63,67 +63,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION: What we build — sticky stacking cards */}
       <section className="sec sec-tight" id="automate">
         <div className="wrap">
-          <div className="head" data-reveal>
-            <Kicker flush>{home.automate.label}</Kicker>
-            <h2 className="h2" style={{ maxWidth: "16em" }} data-split="scroll">
-              {home.automate.headline}
-            </h2>
-          </div>
+          <div className="head" data-reveal><Kicker flush>{home.automate.label}</Kicker><h2 className="h2" style={{ maxWidth: "15em" }} data-split="scroll">{home.automate.headline}</h2></div>
+          {/* Stacking cards: each card's illustration is chosen by `visual` in content/site.ts */}
           <div className="stack" data-stack>
             {home.automate.cards.map((c, i) => (
-              <Link
-                href={c.href}
-                className={`stack-card stack-card-v${(i % 5) + 1}`}
-                key={c.team}
-                data-stack-card
-                data-cursor="Explore"
-              >
-                <div className="stack-card-content">
-                  <div className="stack-card-badge-row">
-                    <span className="stack-card-num">0{i + 1}</span>
-                    <span className="stack-card-team">{c.team}</span>
-                  </div>
-                  <h3 className="h3 stack-card-title">{c.tagline}</h3>
-                  <ul className="stack-card-bullets">
-                    {c.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                  <div className="stack-card-footer">
-                    <span className="stack-card-link">
-                      <span>Explore {c.team}</span>
-                      <ArrowNE className="arr" />
-                    </span>
-                  </div>
+              <Link className="stack-card" href={c.link.href} key={c.team} data-stack-card data-cursor="Explore">
+                <div>
+                  <span className="num">0{i + 1} / 0{home.automate.cards.length}</span>
+                  <span style={{ display: "block", marginTop: 14, fontSize: 14, fontWeight: 600, color: "var(--violet)" }}>{c.team}</span>
+                  <h3 className="h3" style={{ marginTop: 12 }}>{c.tagline}</h3>
+                  <ul style={{ marginTop: 22 }}>{c.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
+                  <span className="link" style={{ marginTop: 28 }}>{c.link.label}</span>
                 </div>
-                <div className="stack-card-visual">
-                  <div className="stack-card-glow" aria-hidden="true" />
-                  <div className="stack-card-img-wrap">
-                    <Image
-                      src={c.image}
-                      alt={c.team}
-                      width={640}
-                      height={400}
-                      className="stack-card-img"
-                      priority={i === 0}
-                    />
-                  </div>
-                </div>
+                <Visual name={c.visual} />
               </Link>
             ))}
           </div>
         </div>
       </section>
 
+      {/* SECTION: Then we grow it — rows with hover previews */}
       <section className="sec sec-tight">
         <div className="wrap">
           <div className="head" data-reveal><Kicker flush>{home.growth.label}</Kicker><h2 className="h2" style={{ maxWidth: "15em" }} data-split="scroll">{home.growth.headline}</h2></div>
-          <HoverImageLinks items={home.growth.rows} />
+          {/* Growth rows: desktop shows a floating preview that follows the cursor (data-hp); phones show it inline (.row-vis) */}
+          <div style={{ position: "relative" }}>
+            <div className="rows" data-reveal>
+              {home.growth.rows.map((r, i) => (
+                <Link className="row" href={r.href} key={r.title} data-reveal-item data-hp-row={i}>
+                  <span className="t">{r.title}</span><span className="d">{r.text}</span><ArrowNE className="arr" />
+                  <div className="row-vis"><Visual name={r.visual} /></div>
+                </Link>
+              ))}
+            </div>
+            <div className="hp" data-hp aria-hidden="true">
+              <div className="hp-inner">
+                {home.growth.rows.map((r) => <div className="hp-item" data-hp-item key={r.title}><Visual name={r.visual} /></div>)}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* SECTION: How we work — pinned horizontal scroll on desktop */}
       <ProcessScroller />
 
       <section className="sec">
@@ -145,22 +130,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION: Work — live client sites */}
       <section className="sec sec-tight" id="work">
         <div className="wrap">
           <div className="head" data-reveal><Kicker flush>{home.work.label}</Kicker><h2 className="h2" data-split="scroll">{home.work.headline}</h2></div>
+          {/* Work: browser-window previews of live client sites. Hover scrolls the preview. Add `image` in content/site.ts to use a real screenshot. */}
           <div className="work" data-reveal>
-            {home.work.cases.map((c) => {
-              const inner = (
-                <>
-                  {c.image && <Image src={c.image} alt={c.client} fill sizes="(max-width: 768px) 100vw, 33vw" />}
-                  <div className="initial" aria-hidden="true">{c.client.charAt(0)}</div>
-                  <div><span className="sector">{c.client} · {c.sector}</span><h3 className="h3">{c.result}</h3></div>
-                </>
-              );
-              return c.href
-                ? <Link className="case" href={c.href} key={c.client} data-reveal-item data-tilt data-cursor="View">{inner}</Link>
-                : <article className="case" key={c.client} data-reveal-item data-tilt data-cursor={c.client}>{inner}</article>;
-            })}
+            {home.work.cases.map((c) => (
+              <a className="site" href={c.url} target="_blank" rel="noopener" key={c.client} data-reveal-item data-cursor="Visit" style={{ ["--acc" as string]: c.accent }}>
+                <div className="site-frame" data-tilt>
+                  <div className="site-bar"><i /><i /><i /><span>{c.domain}</span></div>
+                  <div className="site-view">
+                    <div className="site-page">
+                      {c.image ? <img src={c.image} alt={`${c.client} website`} loading="lazy" /> : (
+                        <div className="mock" aria-hidden="true">
+                          <div className="mock-nav"><b>{c.client}</b><span /><span /><span /><em /></div>
+                          <small>{c.preview.kicker}</small>
+                          <h4>{c.preview.headline}</h4>
+                          <span className="mcta">{c.preview.cta}</span>
+                          <div className="mock-hero" />
+                          <div className="mock-tiles">{c.preview.tiles.map((x) => <div key={x}>{x}</div>)}</div>
+                          <div className="mock-lines"><span /><span /><span /></div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="site-meta"><span className="sector">{c.client} · {c.sector}</span><span className="visit">Visit site<ArrowNE /></span></div>
+                <h3 className="h3">{c.result}</h3>
+              </a>
+            ))}
           </div>
         </div>
       </section>

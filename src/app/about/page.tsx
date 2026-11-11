@@ -8,6 +8,13 @@ export default function AboutPage() {
   return (
     <>
       <PageHero eyebrow={about.eyebrow} title={about.headline} sub={about.intro} />
+      {/* DEV NOTE: team photo — swap the file at public/images/team.jpg, or change about.photo in content/site.ts */}
+      <section className="sec sec-tight"><div className="wrap">
+        <figure className="photo-band" data-reveal style={{ margin: 0 }}>
+          <img src={about.photo.src} alt={about.photo.alt} data-parallax="-0.08" />
+          <figcaption>The people behind your systems.</figcaption>
+        </figure>
+      </div></section>
       <section className="sec sec-tight"><div className="wrap">
         <div className="head" data-reveal><Kicker flush>{about.beliefsLabel}</Kicker><h2 className="h2" data-split="scroll">{about.beliefsHeadline}</h2></div>
         <div className="cells c4" data-reveal>
