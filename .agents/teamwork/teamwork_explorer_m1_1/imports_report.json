@@ -1,0 +1,506 @@
+[
+  {
+    "file": "app/about/page.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/about/page.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { about } from \"@/content/site\";"
+  },
+  {
+    "file": "app/about/page.tsx",
+    "line": 3,
+    "importPath": "@/components/Blocks",
+    "raw": "import { Closer, Kicker, PageHero } from \"@/components/Blocks\";"
+  },
+  {
+    "file": "app/api/contact/route.ts",
+    "line": 1,
+    "importPath": "next/server",
+    "raw": "import { NextResponse } from \"next/server\";"
+  },
+  {
+    "file": "app/careers/page.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/careers/page.tsx",
+    "line": 2,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "app/careers/page.tsx",
+    "line": 3,
+    "importPath": "@/content/site",
+    "raw": "import { careers } from \"@/content/site\";"
+  },
+  {
+    "file": "app/careers/page.tsx",
+    "line": 4,
+    "importPath": "@/components/Blocks",
+    "raw": "import { Closer, Kicker, PageHero } from \"@/components/Blocks\";"
+  },
+  {
+    "file": "app/careers/page.tsx",
+    "line": 5,
+    "importPath": "@/components/Icons",
+    "raw": "import { ArrowNE } from \"@/components/Icons\";"
+  },
+  {
+    "file": "app/contact/page.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/contact/page.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { contact, settings } from \"@/content/site\";"
+  },
+  {
+    "file": "app/contact/page.tsx",
+    "line": 3,
+    "importPath": "@/components/BookButton",
+    "raw": "import { BookButton } from \"@/components/BookButton\";"
+  },
+  {
+    "file": "app/contact/page.tsx",
+    "line": 4,
+    "importPath": "@/components/ContactForm",
+    "raw": "import { ContactForm } from \"@/components/ContactForm\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata, Viewport } from \"next\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 2,
+    "importPath": "next/font/local",
+    "raw": "import localFont from \"next/font/local\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 3,
+    "importPath": "geist/font/sans",
+    "raw": "import { GeistSans } from \"geist/font/sans\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 4,
+    "importPath": "./globals.css",
+    "raw": "import \"./globals.css\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 5,
+    "importPath": "@/components/Nav",
+    "raw": "import { Nav } from \"@/components/Nav\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 6,
+    "importPath": "@/components/Footer",
+    "raw": "import { Footer } from \"@/components/Footer\";"
+  },
+  {
+    "file": "app/layout.tsx",
+    "line": 7,
+    "importPath": "@/components/MotionProvider",
+    "raw": "import { MotionProvider } from \"@/components/MotionProvider\";"
+  },
+  {
+    "file": "app/not-found.tsx",
+    "line": 1,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 1,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { faqs, home, services } from \"@/content/site\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 3,
+    "importPath": "@/components/BookButton",
+    "raw": "import { BookButton } from \"@/components/BookButton\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 4,
+    "importPath": "@/components/Blocks",
+    "raw": "import { Closer, Kicker, Ladder, ProcessScroller } from \"@/components/Blocks\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 5,
+    "importPath": "@/components/Faq",
+    "raw": "import { Faq } from \"@/components/Faq\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 6,
+    "importPath": "@/components/Flow",
+    "raw": "import { Flow } from \"@/components/Flow\";"
+  },
+  {
+    "file": "app/page.tsx",
+    "line": 7,
+    "importPath": "@/components/Icons",
+    "raw": "import { ArrowNE, Mark } from \"@/components/Icons\";"
+  },
+  {
+    "file": "app/pricing/page.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/pricing/page.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { faqs, pricing } from \"@/content/site\";"
+  },
+  {
+    "file": "app/pricing/page.tsx",
+    "line": 3,
+    "importPath": "@/components/Blocks",
+    "raw": "import { Closer, Kicker, Ladder, PageHero } from \"@/components/Blocks\";"
+  },
+  {
+    "file": "app/pricing/page.tsx",
+    "line": 4,
+    "importPath": "@/components/Faq",
+    "raw": "import { Faq } from \"@/components/Faq\";"
+  },
+  {
+    "file": "app/pricing/page.tsx",
+    "line": 5,
+    "importPath": "@/components/PriceTable",
+    "raw": "import { PriceTable } from \"@/components/PriceTable\";"
+  },
+  {
+    "file": "app/services/page.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/services/page.tsx",
+    "line": 2,
+    "importPath": "@/components/Blocks",
+    "raw": "import { Closer, PageHero, ServiceRows } from \"@/components/Blocks\";"
+  },
+  {
+    "file": "app/services/page.tsx",
+    "line": 3,
+    "importPath": "@/content/site",
+    "raw": "import { home } from \"@/content/site\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 1,
+    "importPath": "next",
+    "raw": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 2,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 3,
+    "importPath": "next/navigation",
+    "raw": "import { notFound } from \"next/navigation\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 4,
+    "importPath": "@/content/site",
+    "raw": "import { services } from \"@/content/site\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 5,
+    "importPath": "@/components/BookButton",
+    "raw": "import { BookButton } from \"@/components/BookButton\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 6,
+    "importPath": "@/components/Blocks",
+    "raw": "import { Closer, Kicker, ProcessScroller } from \"@/components/Blocks\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 7,
+    "importPath": "@/components/Faq",
+    "raw": "import { Faq } from \"@/components/Faq\";"
+  },
+  {
+    "file": "app/services/[slug]/page.tsx",
+    "line": 8,
+    "importPath": "@/components/Icons",
+    "raw": "import { Check, Mark } from \"@/components/Icons\";"
+  },
+  {
+    "file": "components/Blocks.tsx",
+    "line": 1,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "components/Blocks.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { closer, pricing, workProcess, services } from \"@/content/site\";"
+  },
+  {
+    "file": "components/Blocks.tsx",
+    "line": 3,
+    "importPath": "./BookButton",
+    "raw": "import { BookButton } from \"./BookButton\";"
+  },
+  {
+    "file": "components/Blocks.tsx",
+    "line": 4,
+    "importPath": "./Icons",
+    "raw": "import { ArrowNE, Check, Mark } from \"./Icons\";"
+  },
+  {
+    "file": "components/BookButton.tsx",
+    "line": 1,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "components/BookButton.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { settings } from \"@/content/site\";"
+  },
+  {
+    "file": "components/BookButton.tsx",
+    "line": 3,
+    "importPath": "./Icons",
+    "raw": "import { Arrow } from \"./Icons\";"
+  },
+  {
+    "file": "components/ContactForm.tsx",
+    "line": 2,
+    "importPath": "react",
+    "raw": "import { useState } from \"react\";"
+  },
+  {
+    "file": "components/ContactForm.tsx",
+    "line": 3,
+    "importPath": "@/content/site",
+    "raw": "import { contact } from \"@/content/site\";"
+  },
+  {
+    "file": "components/Faq.tsx",
+    "line": 2,
+    "importPath": "react",
+    "raw": "import { useState } from \"react\";"
+  },
+  {
+    "file": "components/Flow.tsx",
+    "line": 2,
+    "importPath": "react",
+    "raw": "import { useEffect, useRef } from \"react\";"
+  },
+  {
+    "file": "components/Flow.tsx",
+    "line": 3,
+    "importPath": "@/content/site",
+    "raw": "import { home } from \"@/content/site\";"
+  },
+  {
+    "file": "components/Flow.tsx",
+    "line": 4,
+    "importPath": "@/lib/motion",
+    "raw": "import { initFlow } from \"@/lib/motion\";"
+  },
+  {
+    "file": "components/Flow.tsx",
+    "line": 5,
+    "importPath": "./Icons",
+    "raw": "import { Check } from \"./Icons\";"
+  },
+  {
+    "file": "components/Footer.tsx",
+    "line": 1,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "components/Footer.tsx",
+    "line": 2,
+    "importPath": "@/content/site",
+    "raw": "import { footer, settings } from \"@/content/site\";"
+  },
+  {
+    "file": "components/Footer.tsx",
+    "line": 3,
+    "importPath": "./Icons",
+    "raw": "import { Mark } from \"./Icons\";"
+  },
+  {
+    "file": "components/MotionProvider.tsx",
+    "line": 2,
+    "importPath": "next/navigation",
+    "raw": "import { usePathname } from \"next/navigation\";"
+  },
+  {
+    "file": "components/MotionProvider.tsx",
+    "line": 3,
+    "importPath": "react",
+    "raw": "import { useEffect, useRef } from \"react\";"
+  },
+  {
+    "file": "components/MotionProvider.tsx",
+    "line": 4,
+    "importPath": "lenis",
+    "raw": "import type Lenis from \"lenis\";"
+  },
+  {
+    "file": "components/MotionProvider.tsx",
+    "line": 5,
+    "importPath": "@/lib/motion",
+    "raw": "import { initCursor, initMotion, initSmoothScroll, runCurtain, runPreloader, ScrollTrigger } from \"@/lib/motion\";"
+  },
+  {
+    "file": "components/MotionProvider.tsx",
+    "line": 6,
+    "importPath": "@/content/site",
+    "raw": "import { settings } from \"@/content/site\";"
+  },
+  {
+    "file": "components/MotionProvider.tsx",
+    "line": 7,
+    "importPath": "./Icons",
+    "raw": "import { Mark } from \"./Icons\";"
+  },
+  {
+    "file": "components/Nav.tsx",
+    "line": 2,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "components/Nav.tsx",
+    "line": 3,
+    "importPath": "next/navigation",
+    "raw": "import { usePathname } from \"next/navigation\";"
+  },
+  {
+    "file": "components/Nav.tsx",
+    "line": 4,
+    "importPath": "react",
+    "raw": "import { useEffect, useState } from \"react\";"
+  },
+  {
+    "file": "components/Nav.tsx",
+    "line": 5,
+    "importPath": "@/content/site",
+    "raw": "import { nav, settings } from \"@/content/site\";"
+  },
+  {
+    "file": "components/Nav.tsx",
+    "line": 6,
+    "importPath": "./BookButton",
+    "raw": "import { BookButton } from \"./BookButton\";"
+  },
+  {
+    "file": "components/Nav.tsx",
+    "line": 7,
+    "importPath": "./Icons",
+    "raw": "import { Mark } from \"./Icons\";"
+  },
+  {
+    "file": "components/PriceTable.tsx",
+    "line": 2,
+    "importPath": "next/link",
+    "raw": "import Link from \"next/link\";"
+  },
+  {
+    "file": "components/PriceTable.tsx",
+    "line": 3,
+    "importPath": "react",
+    "raw": "import { useState } from \"react\";"
+  },
+  {
+    "file": "components/PriceTable.tsx",
+    "line": 4,
+    "importPath": "@/content/site",
+    "raw": "import { pricing, services } from \"@/content/site\";"
+  },
+  {
+    "file": "lib/motion.ts",
+    "line": 19,
+    "importPath": "gsap",
+    "raw": "import { gsap } from \"gsap\";"
+  },
+  {
+    "file": "lib/motion.ts",
+    "line": 20,
+    "importPath": "gsap/ScrollTrigger",
+    "raw": "import { ScrollTrigger } from \"gsap/ScrollTrigger\";"
+  },
+  {
+    "file": "lib/motion.ts",
+    "line": 21,
+    "importPath": "lenis",
+    "raw": "import Lenis from \"lenis\";"
+  },
+  {
+    "file": "next.config.mjs",
+    "line": 1,
+    "importPath": "next",
+    "raw": "/** @type {import('next').NextConfig} */"
+  },
+  {
+    "file": "preview/build.mjs",
+    "line": 3,
+    "importPath": "node:fs",
+    "raw": "import fs from \"node:fs\";"
+  },
+  {
+    "file": "preview/build.mjs",
+    "line": 4,
+    "importPath": "node:path",
+    "raw": "import path from \"node:path\";"
+  },
+  {
+    "file": "preview/build.mjs",
+    "line": 5,
+    "importPath": "esbuild",
+    "raw": "import { build } from \"esbuild\";"
+  },
+  {
+    "file": "preview/runtime.ts",
+    "line": 3,
+    "importPath": "../lib/motion",
+    "raw": "import { initCursor, initFlow, initMotion, initSmoothScroll, runCurtain, runPreloader, ScrollTrigger } from \"../lib/motion\";"
+  }
+]
