@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { closer, pricing, workProcess, services } from "@/content/site";
+import { closer, pricing, services } from "@/content/site";
 import { BookButton } from "./BookButton";
 import { ArrowNE, Check, Mark } from "./Icons";
+import ProcessTimeline from "./ProcessTimeline";
 
 export function PageHero({ eyebrow, title, muted, sub, children, eyebrowHref }: { eyebrow: string; title: string; muted?: string; sub?: string; children?: React.ReactNode; eyebrowHref?: string }) {
   return (
@@ -45,29 +46,10 @@ export function Closer({ headline = closer.headline, subhead = closer.subhead, c
 }
 
 export function ProcessScroller() {
-  return (
-    <section className="band" id="how">
-      <div className="hs" data-hscroll>
-        <div className="wrap" style={{ width: "100%" }}>
-          <div className="head" data-reveal><Kicker flush>{workProcess.label}</Kicker><h2 className="h2" style={{ maxWidth: "14em" }} data-split="scroll">{workProcess.headline}</h2></div>
-        </div>
-        <div style={{ paddingLeft: "max(var(--pad), calc((100vw - 1320px) / 2 + var(--pad)))", paddingRight: "var(--pad)" }}>
-          <ol className="hs-track" data-hscroll-track style={{ listStyle: "none", margin: 0, padding: 0 }}>
-            {workProcess.steps.map((s, i) => (
-              <li className="hs-card" key={s.title}>
-                <span className="num">0{i + 1}</span>
-                <span className="ttl">{s.title}</span>
-                <span className="muted">{s.text}</span>
-                <span className="get">You get {s.get}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className="wrap" style={{ width: "100%" }}><div className="hs-bar"><span data-hscroll-bar /></div></div>
-      </div>
-    </section>
-  );
+  return <ProcessTimeline />;
 }
+
+export { ProcessTimeline };
 
 export function Ladder() {
   return (

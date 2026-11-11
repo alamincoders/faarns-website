@@ -177,15 +177,22 @@ export function initMotion(root: HTMLElement, opts: MotionOptions = {}): () => v
         cleanups.push(() => { el.removeEventListener("mouseenter", pause); el.removeEventListener("mouseleave", play); });
       });
 
-      // Stacking cards
+      // Stacking cards: stays 100% crisp until the next card approaches near the top to stack over it
       q("[data-stack]").forEach((el) => {
         const cards = Array.from(el.querySelectorAll<HTMLElement>("[data-stack-card]"));
         cards.forEach((card, i) => {
           const next = cards[i + 1];
           if (!next) return;
           gsap.to(card, {
-            scale: 0.9, filter: "brightness(0.45)", ease: "none",
-            scrollTrigger: { trigger: next, start: "top bottom", end: "top 20%", scrub: true },
+            scale: 0.96,
+            opacity: 0.45,
+            ease: "none",
+            scrollTrigger: {
+              trigger: next,
+              start: "top 45%",
+              end: "top 18%",
+              scrub: true,
+            },
           });
         });
       });
